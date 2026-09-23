@@ -1,0 +1,45 @@
+"""Taiwan geographic location coordinates data."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+# Canonical coordinate mapping for 22 administrative divisions of Taiwan
+TAIWAN_COORDINATES: dict[str, dict[str, Any]] = {
+    "臺北市": {"lat": 25.0330, "lon": 121.5654, "english": "Taipei City"},
+    "新北市": {"lat": 25.0118, "lon": 121.4628, "english": "New Taipei City"},
+    "桃園市": {"lat": 24.9936, "lon": 121.3010, "english": "Taoyuan City"},
+    "臺中市": {"lat": 24.1477, "lon": 120.6736, "english": "Taichung City"},
+    "臺南市": {"lat": 22.9997, "lon": 120.2270, "english": "Tainan City"},
+    "高雄市": {"lat": 22.6273, "lon": 120.3014, "english": "Kaohsiung City"},
+    "基隆市": {"lat": 25.1276, "lon": 121.7392, "english": "Keelung City"},
+    "新竹市": {"lat": 24.8138, "lon": 120.9675, "english": "Hsinchu City"},
+    "新竹縣": {"lat": 24.8387, "lon": 121.0177, "english": "Hsinchu County"},
+    "苗栗縣": {"lat": 24.5602, "lon": 120.8214, "english": "Miaoli County"},
+    "彰化縣": {"lat": 24.0518, "lon": 120.5161, "english": "Changhua County"},
+    "南投縣": {"lat": 23.9609, "lon": 120.9719, "english": "Nantou County"},
+    "雲林縣": {"lat": 23.7092, "lon": 120.4313, "english": "Yunlin County"},
+    "嘉義市": {"lat": 23.4800, "lon": 120.4491, "english": "Chiayi City"},
+    "嘉義縣": {"lat": 23.4518, "lon": 120.2555, "english": "Chiayi County"},
+    "屏東縣": {"lat": 22.5519, "lon": 120.5487, "english": "Pingtung County"},
+    "宜蘭縣": {"lat": 24.7021, "lon": 121.7377, "english": "Yilan County"},
+    "花蓮縣": {"lat": 23.9871, "lon": 121.6015, "english": "Hualien County"},
+    "臺東縣": {"lat": 22.7583, "lon": 121.1444, "english": "Taitung County"},
+    "澎湖縣": {"lat": 23.5711, "lon": 119.5793, "english": "Penghu County"},
+    "金門縣": {"lat": 24.4492, "lon": 118.3766, "english": "Kinmen County"},
+    "連江縣": {"lat": 26.1505, "lon": 119.9499, "english": "Lienchiang County"},
+}
+
+
+def load_taiwan_locations() -> dict[str, dict[str, Any]]:
+    """Load coordinates from JSON file if available, otherwise return fallback mapping."""
+    json_path = Path(__file__).resolve().parent.parent.parent / "data" / "taiwan_locations.json"
+    if json_path.exists():
+        try:
+            with open(json_path, encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return TAIWAN_COORDINATES
