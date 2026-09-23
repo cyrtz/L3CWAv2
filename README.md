@@ -7,6 +7,9 @@
 [![Folium](https://img.shields.io/badge/Map-Folium-77B800.svg)](https://python-visualization.github.io/folium/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+GitHub Repo：https://github.com/cyrtz/L3CWAv2
+網頁：https://l3cwav2-xbdecisehtv2qwowxdgrvg.streamlit.app/
+
 一套架構完整、模組化分層設計的台灣即時天氣預報互動式系統。本專案非單純靜態展示，而是實作從 **中央氣象署 (CWA) Open Data API 串接**、**HTTP 錯誤處理**、**多資料集 JSON 解析**、**Pandas 資料清洗**、**SQLite 結構化儲存 (UPSERT)**、**參數化 SQL 查詢**，到 **Streamlit 互動儀表板**、**Plotly 氣溫趨勢圖** 與 **Folium 台灣氣溫分級地圖** 的全流程實戰專案。
 
 ---
